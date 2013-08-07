@@ -3446,8 +3446,8 @@
           });
 
           this.widget.find('[data-glome-mvc]')
-            .off('click.glome')
-            .on('click.glome', function(e)
+            .off('click.glome touch.glome')
+            .on('click.glome touch.glome', function(e)
             {
               plugin.MVC.run(jQuery(this).attr('data-glome-mvc'));
               return false;
@@ -3458,8 +3458,8 @@
           // We do a heartbeat check before opening the widget
           // TODO: log this event separately on the server for stats
           this.widget.find('#glomeWidgetIcon')
-            .off('click.glome')
-            .on('click.glome', function(e)
+            .off('click.glome touch.glome')
+            .on('click.glome touch.glome', function(e)
             {
               plugin.Log.debug('widget clicked');
 
@@ -3521,8 +3521,8 @@
           });
 
           this.widget.find('a')
-            .off('click.glome')
-            .on('click.glome', function(e)
+            .off('click.glome touch.glome')
+            .on('click.glome touch.glome', function(e)
             {
               plugin.MVC.run('ShowItem', {adId: jQuery(this).parents('[data-knocking-ad]').attr('data-knocking-ad'), forceCategory: jQuery(this).parents('[data-category]').attr('data-category')});
               return true;
@@ -3616,8 +3616,8 @@
           {
             var header = plugin.Templates.populate('public-header');
             header.find('.glome-close')
-              .off('click.glome')
-              .on('click.glome', function()
+              .off('click.glome touch.glome')
+              .on('click.glome touch.glome', function()
               {
                 plugin.MVC.closeLayers();
                 plugin.MVC.run('Widget');
@@ -3646,16 +3646,16 @@
           jQuery(window).trigger('resize.glome');
 
           plugin.options.container.find('[data-glome-mvc]')
-            .off('click.glome')
-            .on('click.glome', function(e)
+            .off('click.glome touch.glome')
+            .on('click.glome touch.glome', function(e)
             {
               plugin.MVC.run(jQuery(this).attr('data-glome-mvc'));
               return false;
             });
 
           plugin.options.container.find('.force-reload')
-            .off('click.glome')
-            .on('click.glome', function(e)
+            .off('click.glome touch.glome')
+            .on('click.glome touch.glome', function(e)
             {
               plugin.Ads.load(function()
               {
@@ -3699,8 +3699,8 @@
           var request = null;
 
           this.contentArea.find('#glomePublicRequirePasswordContainer').find('button')
-            .off('click.glome')
-            .on('click.glome', function(e)
+            .off('click.glome touch.glome')
+            .on('click.glome touch.glome', function(e)
             {
               plugin.options.container.find('#glomePublicRequirePasswordContainer').trigger('submit');
               return false;
@@ -3768,14 +3768,14 @@
         {
           this.controllerInit(args);
           this.content.find('#glomePublicFirstRunProceed')
-            .on('click.glome', function()
+            .on('click.glome touch.glome', function()
             {
               plugin.MVC.run('FirstRunSubscriptions');
             });
 
           this.content.find('a.glome-skip')
-            .off('click.glome')
-            .on('click.glome', function()
+            .off('click.glome touch.glome')
+            .on('click.glome touch.glome', function()
             {
               plugin.options.container.find('.glome-close').trigger('click');
             });
@@ -3825,7 +3825,7 @@
         {
           this.controllerInit(args);
           this.contentArea.find('.glome-subscribe')
-            .on('click.glome', function()
+            .on('click.glome touch.glome', function()
             {
               var id = jQuery(this).parents('[data-glome-category]').attr('data-glome-category');
               var changeCount = function()
@@ -3849,13 +3849,13 @@
             });
 
           this.contentArea.find('.glome-pager .glome-navigation-button.left')
-            .on('click.glome', function()
+            .on('click.glome touch.glome', function()
             {
               plugin.MVC.run('FirstRunInitialize');
             });
 
           this.contentArea.find('.glome-pager .glome-navigation-button.right')
-            .on('click.glome', function()
+            .on('click.glome touch.glome', function()
             {
               plugin.MVC.run('FirstRunPassword');
             });
@@ -3886,14 +3886,14 @@
         {
           this.controllerInit(args);
           this.contentArea.find('.glome-pager .glome-navigation-button.left')
-            .off('click.glome')
-            .on('click.glome', function()
+            .off('click.glome touch.glome')
+            .on('click.glome touch.glome', function()
             {
               plugin.MVC.run('FirstRunSubscriptions');
             });
 
           this.contentArea.find('.glome-pager .glome-navigation-button.right')
-            .on('click.glome', function()
+            .on('click.glome touch.glome', function()
             {
               plugin.MVC.run('FirstRunFinish');
             });
@@ -3935,7 +3935,7 @@
             });
 
           plugin.options.container.find('#glomePublicSetPassword').find('button')
-            .on('click.glome', function()
+            .on('click.glome touch.glome', function()
             {
               jQuery(this).parents('form').trigger('click');
             });
@@ -3966,14 +3966,14 @@
         {
           this.controllerInit(args);
           this.content.find('#glomePublicFinishClose')
-            .on('click.glome', function()
+            .on('click.glome touch.glome', function()
             {
               plugin.options.container.find('.glome-close').trigger('click');
             });
 
           this.content.find('a.glome-settings')
-            .off('click.glome')
-            .on('click.glome', function()
+            .off('click.glome touch.glome')
+            .on('click.glome touch.glome', function()
             {
               plugin.options.container.find('.glome-close').trigger('click');
               plugin.MVC.run('AdminProfile');
@@ -4082,7 +4082,7 @@
 
           // show shop
           this.content.find('.glome-to-shop')
-            .on('click.glome', function(e)
+            .on('click.glome touch.glome', function(e)
             {
               var categoryId = jQuery(this).parents('[data-category-id]').attr('data-category-id');
               plugin.MVC.run('ShowShop', {categoryId: categoryId});
@@ -4090,7 +4090,7 @@
             });
 
           this.content.find('.glome-ad-image, .glome-goto-ad')
-            .on('click.glome', function(e)
+            .on('click.glome touch.glome', function(e)
             {
               plugin.Ads.click(plugin.mvc.ad.id);
               plugin.options.container.find('.glome-close').trigger('click');
@@ -4098,7 +4098,7 @@
             });
 
           this.content.find('.glome-notnow-ad')
-            .on('click.glome', function(e)
+            .on('click.glome touch.glome', function(e)
             {
               plugin.Ads.notnow(plugin.Ads.adId);
               plugin.options.container.find('.glome-to-shop').trigger('click');
@@ -4107,8 +4107,8 @@
 
           // click handler for ads from same brand
           this.content.find('.more-from-brand .ad')
-            .off('click.glome')
-            .on('click.glome', function(e)
+            .off('click.glome touch.glome')
+            .on('click.glome touch.glome', function(e)
             {
               plugin.MVC.run('ShowItem', {adId: jQuery(this).attr('data-ad-id'), forceCategory: Number(jQuery(this).attr('data-category-id'))});
               return false;
@@ -4190,16 +4190,16 @@
           this.controllerInit(args);
 
           this.content.find('.ad .module')
-            .off('click.glome')
-            .on('click.glome', function(e)
+            .off('click.glome touch.glome')
+            .on('click.glome touch.glome', function(e)
             {
               plugin.MVC.run('ShowItem', {adId: jQuery(this).parents('[data-ad-id]').attr('data-ad-id'), forceCategory: Number(jQuery(this).parents('[data-category-id]').attr('data-category-id'))});
               return false;
             });
 
           this.content.find('.nav').find('li.glome-category')
-            .off('click.glome')
-            .on('click.glome', function(e)
+            .off('click.glome touch.glome')
+            .on('click.glome touch.glome', function(e)
             {
               plugin.MVC.run('ShowShop', {categoryId: jQuery(this).attr('data-category-id')});
               return false;
@@ -4324,8 +4324,8 @@
           }
 
           nav.find('a')
-            .off('click.glome')
-            .on('click.glome', function(e)
+            .off('click.glome touch.glome')
+            .on('click.glome touch.glome', function(e)
             {
               try
               {
@@ -4386,8 +4386,8 @@
           {
             var header = plugin.Templates.populate('admin-header');
             header.find('.glome-close')
-              .off('click.glome')
-              .on('click.glome', function()
+              .off('click.glome touch.glome')
+              .on('click.glome touch.glome', function()
               {
                 plugin.options.container.find('[data-glome-template="admin-wrapper"]').remove();
                 plugin.MVC.run('Widget');
@@ -4418,8 +4418,8 @@
           jQuery(window).trigger('resize.glome');
 
           plugin.options.container.find('[data-glome-mvc]')
-            .off('click.glome')
-            .on('click.glome', function(e)
+            .off('click.glome touch.glome')
+            .on('click.glome touch.glome', function(e)
             {
               plugin.MVC.run(jQuery(this).attr('data-glome-mvc'));
               return false;
@@ -4488,7 +4488,7 @@
           this.controllerInit(args);
 
           this.contentArea.find('.glome-subscribe')
-            .on('click.glome', function()
+            .on('click.glome touch.glome', function()
             {
               var id = jQuery(this).parents('[data-glome-category]').attr('data-glome-category');
               var changeCount = function()
@@ -4512,13 +4512,13 @@
             });
 
           this.contentArea.find('.glome-pager .glome-navigation-button.left')
-            .on('click.glome', function()
+            .on('click.glome touch.glome', function()
             {
               plugin.MVC.run('FirstRunInitialize');
             });
 
           this.contentArea.find('.glome-pager .glome-navigation-button.right')
-            .on('click.glome', function()
+            .on('click.glome touch.glome', function()
             {
               plugin.MVC.run('FirstRunPassword');
             });
