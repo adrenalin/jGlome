@@ -74,6 +74,7 @@
     this.templateLocation = 'template.html';
     this.userData = null;
     this.stats = null;
+    this.version = '0.1';
 
     /**
      * Current MVC instance
