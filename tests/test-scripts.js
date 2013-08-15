@@ -1647,7 +1647,8 @@ QUnit.test('Click getit on an ad', function()
       QUnit.notEqual(0, Object.keys(Glome.Ads.stack).length, 'Glome ads were loaded');
 
       var adId = null;
-      for (var [key, value] in Iterator(Glome.Ads.stack))
+      
+      for (key in Object.keys(Glome.Ads.stack))
       {
         adId = key;
         break;
@@ -1704,7 +1705,7 @@ QUnit.test('Click notnow on an ad', function()
       QUnit.notEqual(0, Object.keys(Glome.Ads.stack).length, 'Glome ads were loaded');
 
       var adId = null;
-      for (var [key, value] in Iterator(Glome.Ads.stack))
+      for (key in Object.keys(Glome.Ads.stack))
       {
         adId = key;
         break;
