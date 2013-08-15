@@ -75,6 +75,11 @@
     this.userData = null;
     this.stats = null;
     this.version = '0.1';
+    
+    /**
+     * How many retries are allowed on Glome ID creation
+     */
+    this.maxTries = 10;
 
     /**
      * Current MVC instance
@@ -1323,7 +1328,7 @@
        */
       login: function(id, passwd, callback, onerror)
       {
-        if (plugin.pref('loggedin'))
+        if (plugin.pref('loggedin') && plugin.sessionToken)
         {
           plugin.Tools.triggerCallbacks
           (
@@ -1390,7 +1395,7 @@
                 plugin.Log.debug('server provided X-CSRF-Token: ' + token);
               }
 
-              if (! plugin.pref('standalone'))
+              if (!plugin.pref('standalone'))
               {
                 var cookie = jqXHR.getResponseHeader('Set-Cookie').toString().replace(/;.+$/, '');
 
@@ -1505,7 +1510,7 @@
           counter = 1;
         }
 
-        if (counter >= 10)
+        if (counter >= plugin.maxTries)
         {
           throw new Error('Exceeded maximum number of times to create a Glome ID: ' + id);
         }
