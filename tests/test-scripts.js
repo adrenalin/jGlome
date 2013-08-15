@@ -1027,7 +1027,6 @@ QUnit.test('Creating a new Glome ID', function()
   (
     function()
     {
-
       Glome.Auth.createGlomeId(testGlomeId, 10);
     },
     'Exceeded maximum number of times to create a Glome ID',
@@ -1047,6 +1046,7 @@ QUnit.asyncTest('Test Glome ID creation', function()
     function()
     {
       QUnit.ok(Glome.id(), 'Glome ID is initialized');
+      QUnit.ok(Glome.sessionToken, 'There is an XHRF token');
       QUnit.equal(Glome.id(), Glome.pref('glomeid'), 'Initialized and stored Glome ID is the same');
       QUnit.start();
     },
