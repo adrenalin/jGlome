@@ -2926,6 +2926,8 @@
             (
               function()
               {
+                // Wrap the relevant objects with jQuery
+                plugin.options.widgetContainer = jQuery(plugin.options.widgetContainer);
                 plugin.options.widgetContainer.removeAttr('hidden');
                 plugin.MVC.run('RequirePassword');
               },
@@ -3105,6 +3107,11 @@
       /* !MVC Runner */
       run: function(route, args)
       {
+        if (!route || route == 'reset')
+        {
+          return;
+        }
+        
         if (typeof plugin.MVC[route] !== 'function')
         {
           throw new Error('No route called "' + route.toString() + '"');
