@@ -20,6 +20,13 @@
 
     <script type="text/javascript">
       var glome = new jQuery.Glome();
+      
+      if (window.location.hash === '#reset')
+      {
+        glome.glomeid = '';
+        glome.pref('glomeid', glome.glomeid);
+      }
+      
       glome.pref('api.server', window.location.protocol + '//' + window.location.hostname + '/');
       glome.pref('api.refreshads', '3600');
       glome.pref('api.heartbeat', '300');
